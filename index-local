@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CODLUNE — Sites modernos, rápidos e inteligentes</title>
+    <meta name="description" content="A CODLUNE cria sites profissionais focados em performance, SEO e conversão. Tenha um site bonito, rápido e inteligente." />
+    <meta name="theme-color" content="#a855f7" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23a855f7' d='M32 6l8.2 16.6L58 25l-13 12.7 3.1 18.3L32 47.6 15.9 56l3.1-18.3L6 25l17.8-2.4L32 6z'/%3E%3C/svg%3E" />
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                50: '#faf5ff',
+                100: '#f3e8ff',
+                200: '#e9d5ff',
+                300: '#d8b4fe',
+                400: '#c084fc',
+                500: '#a855f7',
+                600: '#9333ea',
+                700: '#7e22ce',
+                800: '#6b21a8',
+                900: '#581c87'
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Roteamento por hash (esconde páginas não ativas) */
+      [data-route] { display: none; }
+      [data-route].active { display: block; }
+      /* Suave fade entre páginas */
+      .page-enter { opacity: 0; transform: translateY(8px); }
+      .page-enter.page-enter-active { opacity: 1; transform: translateY(0); transition: opacity .25s, transform .25s; }
+      /* Grids de cards responsivos mais elegantes */
+      .auto-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    </style>
+    <!-- JSON-LD básico -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "CODLUNE",
+        "url": "https://www.codlune.com.br",
+        "logo": "https://www.codlune.com.br/logo.png",
+        "sameAs": [
+          "https://www.instagram.com/codlune",
+          "https://www.linkedin.com/company/codlune"
+        ]
+      }
+    </script>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100 selection:bg-brand-400/30">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-slate-950/70 bg-slate-900/80 border-b border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="#home" class="flex items-center gap-2 group">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500/10 ring-1 ring-brand-500/30 group-hover:bg-brand-500/20 transition">
+              <!-- logotipo simples -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-brand-400"><path d="M12 3l3.5 6H21l-4.5 4 1.5 7-6-4-6 4 1.5-7L3 9h5.5L12 3z" fill="currentColor"/></svg>
+            </span>
+            <span class="font-semibold tracking-tight">CODLUNE</span>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm">
+            <a class="hover:text-brand-300" href="#home">Início</a>
+            <a class="hover:text-brand-300" href="#servicos">Serviços</a>
+            <a class="hover:text-brand-300" href="#planos">Planos</a>
+            <a class="hover:text-brand-300" href="#portfolio">Portfólio</a>
+            <a class="hover:text-brand-300" href="#sobre">Sobre</a>
+            <a class="hover:text-brand-300" href="#contato">Contato</a>
+          </nav>
+          <div class="flex items-center gap-2">
+            <a href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20um%20site%20com%20a%20CODLUNE" class="hidden md:inline-flex rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-semibold px-4 py-2 transition">Fale no WhatsApp</a>
+            <button id="menuBtn" class="md:hidden inline-flex items-center justify-center rounded-xl border border-white/10 px-3 py-2 hover:bg-white/5" aria-label="Abrir menu">
+              <svg width="20" height="20" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
+        <div class="px-4 py-3 space-y-2 text-sm">
+          <a class="block py-2" href="#home">Início</a>
+          <a class="block py-2" href="#servicos">Serviços</a>
+          <a class="block py-2" href="#planos">Planos</a>
+          <a class="block py-2" href="#portfolio">Portfólio</a>
+          <a class="block py-2" href="#sobre">Sobre</a>
+          <a class="block py-2" href="#contato">Contato</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Conteúdo / "Páginas" -->
+    <main class="relative">
+      <!-- Início -->
+      <section data-route="home" class="active page-enter">
+        <div class="relative overflow-hidden">
+          <div class="absolute inset-0 -z-10 pointer-events-none">
+            <div class="absolute -top-32 left-1/2 -translate-x-1/2 h-96 w-[52rem] rounded-full bg-brand-500/10 blur-3xl"></div>
+          </div>
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-24 pb-16">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <span class="inline-flex items-center gap-2 text-xs font-medium rounded-full ring-1 ring-white/15 px-2.5 py-1 mb-4">
+                  <span class="h-1.5 w-1.5 rounded-full bg-brand-400"></span> Seu novo site começa aqui
+                </span>
+                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">Sites modernos, rápidos e <span class="text-brand-300">inteligentes</span> para o seu negócio</h1>
+                <p class="mt-4 text-slate-300 max-w-xl">A CODLUNE entrega páginas de alto desempenho com SEO, segurança e design que converte — do briefing ao deploy.</p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                  <a href="#planos" class="inline-flex rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-semibold px-5 py-3 transition">Ver Planos</a>
+                  <a href="#portfolio" class="inline-flex rounded-xl border border-white/10 hover:bg-white/5 font-semibold px-5 py-3 transition">Portfólio</a>
+                </div>
+                <div class="mt-8 grid grid-cols-3 gap-6 text-sm text-slate-300 max-w-lg">
+                  <div><div class="text-2xl font-bold text-white">+100</div> projetos entregues</div>
+                  <div><div class="text-2xl font-bold text-white">99,9%</div> uptime gerenciado</div>
+                  <div><div class="text-2xl font-bold text-white">A+</div> performance web</div>
+                </div>
+              </div>
+              <div class="relative">
+                <img class="w-full rounded-2xl ring-1 ring-white/10 shadow-2xl" src="https://placehold.co/960x640/png?text=Imagem+IA:+Hero+Futurista" alt="Imagem IA: composição futurista com UI holográfica" />
+                <div class="absolute -bottom-5 -left-5 w-40 sm:w-48 rounded-xl bg-white/5 p-3 backdrop-blur ring-1 ring-white/10">
+                  <img class="rounded-lg" src="https://placehold.co/420x260/png?text=Imagem+IA:+Dashboard" alt="Imagem IA: dashboard UI"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Destaques -->
+        <section class="py-12 sm:py-16 border-t border-white/10 bg-white/5">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="auto-grid">
+              <div class="rounded-2xl p-6 ring-1 ring-white/10 bg-slate-900/60">
+                <h3 class="font-semibold text-lg">Performance de primeira</h3>
+                <p class="mt-2 text-sm text-slate-300">Core Web Vitals, imagens otimizadas e carregamento instantâneo.</p>
+              </div>
+              <div class="rounded-2xl p-6 ring-1 ring-white/10 bg-slate-900/60">
+                <h3 class="font-semibold text-lg">SEO técnico avançado</h3>
+                <p class="mt-2 text-sm text-slate-300">Sitemaps, meta tags, schema e melhores práticas de indexação.</p>
+              </div>
+              <div class="rounded-2xl p-6 ring-1 ring-white/10 bg-slate-900/60">
+                <h3 class="font-semibold text-lg">Segurança e auditoria</h3>
+                <p class="mt-2 text-sm text-slate-300">HTTPS, headers seguros e checklist de hardening básico.</p>
+              </div>
+              <div class="rounded-2xl p-6 ring-1 ring-white/10 bg-slate-900/60">
+                <h3 class="font-semibold text-lg">Suporte e evolução</h3>
+                <p class="mt-2 text-sm text-slate-300">Planos sob demanda, integrações e melhorias contínuas.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Serviços -->
+      <section data-route="servicos" class="page-enter">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="max-w-2xl">
+            <h2 class="text-3xl sm:text-4xl font-bold">Serviços</h2>
+            <p class="mt-3 text-slate-300">Da identidade visual ao site completo, com integrações e automações.</p>
+          </div>
+          <div class="mt-10 auto-grid">
+            <!-- Card -->
+            <article class="rounded-2xl overflow-hidden ring-1 ring-white/10 bg-slate-900/60">
+              <img class="w-full h-44 object-cover" src="https://placehold.co/800x400/png?text=IA:+Landing+Page" alt="Imagem IA: Landing page moderna" />
+              <div class="p-6">
+                <h3 class="font-semibold text-lg">Landing Pages</h3>
+                <p class="mt-2 text-sm text-slate-300">Páginas de alta conversão com testes A/B e pixels integrados.</p>
+              </div>
+            </article>
+            <article class="rounded-2xl overflow-hidden ring-1 ring-white/10 bg-slate-900/60">
+              <img class="w-full h-44 object-cover" src="https://placehold.co/800x400/png?text=IA:+Institucional" alt="Imagem IA: Site institucional" />
+              <div class="p-6">
+                <h3 class="font-semibold text-lg">Site Institucional</h3>
+                <p class="mt-2 text-sm text-slate-300">Estratégia, design e conteúdo para apresentar sua marca ao mundo.</p>
+              </div>
+            </article>
+            <article class="rounded-2xl overflow-hidden ring-1 ring-white/10 bg-slate-900/60">
+              <img class="w-full h-44 object-cover" src="https://placehold.co/800x400/png?text=IA:+Loja+Virtual" alt="Imagem IA: E-commerce minimalista" />
+              <div class="p-6">
+                <h3 class="font-semibold text-lg">Loja Virtual</h3>
+                <p class="mt-2 text-sm text-slate-300">Catálogo, checkout e meios de pagamento integrados.</p>
+              </div>
+            </article>
+            <article class="rounded-2xl overflow-hidden ring-1 ring-white/10 bg-slate-900/60">
+              <img class="w-full h-44 object-cover" src="https://placehold.co/800x400/png?text=IA:+Automacoes" alt="Imagem IA: Integrações e automações" />
+              <div class="p-6">
+                <h3 class="font-semibold text-lg">Integrações & Automação</h3>
+                <p class="mt-2 text-sm text-slate-300">CRM, WhatsApp, formulários, automações de marketing e mais.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Planos -->
+      <section data-route="planos" class="page-enter">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="max-w-2xl">
+            <h2 class="text-3xl sm:text-4xl font-bold">Planos</h2>
+            <p class="mt-3 text-slate-300">Escolha o plano ideal para o seu momento. Personalizamos conforme necessidade.</p>
+          </div>
+          <div class="mt-10 grid gap-6 md:grid-cols-3">
+            <!-- Plano Start -->
+            <div class="rounded-2xl ring-1 ring-white/10 bg-slate-900/60 p-6 flex flex-col">
+              <h3 class="text-xl font-semibold">Start</h3>
+              <p class="mt-1 text-sm text-slate-300">Para quem está começando.</p>
+              <div class="mt-4 text-4xl font-extrabold">R$ 1.490</div>
+              <ul class="mt-4 space-y-2 text-sm text-slate-300">
+                <li>• 1 página (landing)</li>
+                <li>• Layout responsivo</li>
+                <li>• Otimização básica de SEO</li>
+                <li>• Formulário e WhatsApp</li>
+              </ul>
+              <a href="#contato" class="mt-6 inline-flex justify-center rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-semibold px-4 py-2">Começar</a>
+            </div>
+            <!-- Plano Pro -->
+            <div class="rounded-2xl ring-2 ring-brand-500 bg-slate-900/60 p-6 flex flex-col">
+              <div class="inline-flex self-start text-xs font-medium rounded-full ring-1 ring-brand-400/50 px-2.5 py-1 mb-2 text-brand-300">Mais popular</div>
+              <h3 class="text-xl font-semibold">Pro</h3>
+              <p class="mt-1 text-sm text-slate-300">Para negócios em crescimento.</p>
+              <div class="mt-4 text-4xl font-extrabold">R$ 3.490</div>
+              <ul class="mt-4 space-y-2 text-sm text-slate-300">
+                <li>• Até 6 páginas</li>
+                <li>• Blog + SEO avançado</li>
+                <li>• Integrações (CRM, pixel, e-mail)</li>
+                <li>• Suporte 30 dias</li>
+              </ul>
+              <a href="#contato" class="mt-6 inline-flex justify-center rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-semibold px-4 py-2">Contratar</a>
+            </div>
+            <!-- Plano Empresa -->
+            <div class="rounded-2xl ring-1 ring-white/10 bg-slate-900/60 p-6 flex flex-col">
+              <h3 class="text-xl font-semibold">Empresa</h3>
+              <p class="mt-1 text-sm text-slate-300">Projetos sob medida.</p>
+              <div class="mt-4 text-4xl font-extrabold">Sob consulta</div>
+              <ul class="mt-4 space-y-2 text-sm text-slate-300">
+                <li>• Páginas ilimitadas</li>
+                <li>• Design exclusivo</li>
+                <li>• Integrações avançadas</li>
+                <li>• Suporte dedicado</li>
+              </ul>
+              <a href="#contato" class="mt-6 inline-flex justify-center rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-semibold px-4 py-2">Falar com time</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Portfólio -->
+      <section data-route="portfolio" class="page-enter">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="max-w-2xl">
+            <h2 class="text-3xl sm:text-4xl font-bold">Portfólio</h2>
+            <p class="mt-3 text-slate-300">Alguns conceitos visuais (imagens IA como placeholders).</p>
+          </div>
+          <div class="mt-10 auto-grid">
+            <figure class="group overflow-hidden rounded-2xl ring-1 ring-white/10 bg-slate-900/60">
+              <img class="w-full h-56 object-cover group-hover:scale-[1.02] transition" src="https://placehold.co/900x600/png?text=IA:+UX+Dashboard" alt="Imagem IA: UX Dashboard" />
+              <figcaption class="p-4 text-sm text-slate-300">Painel de métricas • SaaS</figcaption>
+            </figure>
+            <figure class="group overflow-hidden rounded-2xl ring-1 ring-white/10 bg-slate-900/60">
+              <img class="w-full h-56 object-cover group-hover:scale-[1.02] transition" src="https://placehold.co/900x600/png?text=IA:+E-commerce" alt="Imagem IA: E-commerce" />
+              <figcaption class="p-4 text-sm text-slate-300">Loja virtual • Moda</figcaption>
+            </figure>
+            <figure class="group overflow-hidden rounded-2xl ring-1 ring-white/10 bg-slate-900/60">
+              <img class="w-full h-56 object-cover group-hover:scale-[1.02] transition" src="https://placehold.co/900x600/png?text=IA:+Landing+SaaS" alt="Imagem IA: Landing SaaS" />
+              <figcaption class="p-4 text-sm text-slate-300">Landing page • SaaS</figcaption>
+            </figure>
+            <figure class="group overflow-hidden rounded-2xl ring-1 ring-white/10 bg-slate-900/60">
+              <img class="w-full h-56 object-cover group-hover:scale-[1.02] transition" src="https://placehold.co/900x600/png?text=IA:+Institucional" alt="Imagem IA: Institucional" />
+              <figcaption class="p-4 text-sm text-slate-300">Site institucional • Serviços</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sobre -->
+      <section data-route="sobre" class="page-enter">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <h2 class="text-3xl sm:text-4xl font-bold">Sobre a CODLUNE</h2>
+              <p class="mt-3 text-slate-300">Somos um estúdio digital especializado em sites de alta performance, acessíveis e fáceis de manter. Trabalhamos com foco em resultados e experiência do usuário.</p>
+              <ul class="mt-6 space-y-3 text-slate-300">
+                <li>• UX/UI centrado no usuário</li>
+                <li>• Páginas rápidas e responsivas</li>
+                <li>• Implementação orientada a SEO</li>
+                <li>• Time técnico com cultura de qualidade</li>
+              </ul>
+              <div class="mt-6 inline-flex rounded-xl border border-white/10 px-4 py-2">CNPJ • atendimento@codlune.com.br</div>
+            </div>
+            <div class="relative">
+              <img class="w-full rounded-2xl ring-1 ring-white/10" src="https://placehold.co/960x640/png?text=IA:+Time+Criativo" alt="Imagem IA: time criativo colaborando"/>
+              <div class="absolute -bottom-6 -right-6 bg-white/5 backdrop-blur ring-1 ring-white/10 rounded-xl p-3 w-52">
+                <img class="rounded-lg" src="https://placehold.co/420x260/png?text=IA:+Wireframes" alt="Imagem IA: wireframes"/>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="mt-16">
+            <h3 class="text-2xl font-bold">Perguntas frequentes</h3>
+            <div class="mt-6 divide-y divide-white/10 rounded-2xl ring-1 ring-white/10 bg-slate-900/60">
+              <details class="p-5 group" open>
+                <summary class="cursor-pointer font-semibold">Quanto tempo leva para lançar meu site?</summary>
+                <p class="mt-2 text-slate-300">Depende do escopo. Em geral, landing pages saem entre 7 e 15 dias; sites institucionais, 2 a 4 semanas.</p>
+              </details>
+              <details class="p-5 group">
+                <summary class="cursor-pointer font-semibold">Posso editar o conteúdo depois?</summary>
+                <p class="mt-2 text-slate-300">Sim. Usamos CMS ou estruturas simples para facilitar a edição e evolução do conteúdo.</p>
+              </details>
+              <details class="p-5 group">
+                <summary class="cursor-pointer font-semibold">Vocês cuidam de domínio e hospedagem?</summary>
+                <p class="mt-2 text-slate-300">Podemos orientar ou gerenciar tudo para você, incluindo e-mails e monitoramento.</p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contato -->
+      <section data-route="contato" class="page-enter">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div class="max-w-2xl">
+            <h2 class="text-3xl sm:text-4xl font-bold">Contato</h2>
+            <p class="mt-3 text-slate-300">Envie sua mensagem ou fale direto pelo WhatsApp. Respondemos rápido.</p>
+          </div>
+          <div class="mt-10 grid gap-10 md:grid-cols-2">
+            <form class="space-y-4 rounded-2xl ring-1 ring-white/10 bg-slate-900/60 p-6" action="#" method="post">
+              <div>
+                <label class="block text-sm mb-1" for="nome">Nome</label>
+                <input id="nome" name="nome" required class="w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Seu nome" />
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm mb-1" for="email">E-mail</label>
+                  <input id="email" type="email" name="email" required class="w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="voce@exemplo.com" />
+                </div>
+                <div>
+                  <label class="block text-sm mb-1" for="fone">Telefone/WhatsApp</label>
+                  <input id="fone" name="fone" class="w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="(11) 9 0000-0000" />
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm mb-1" for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="5" class="w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" placeholder="Como podemos ajudar?"></textarea>
+              </div>
+              <button class="inline-flex rounded-xl bg-brand-500 hover:bg-brand-400 text-slate-950 font-semibold px-5 py-3">Enviar</button>
+            </form>
+
+            <div class="rounded-2xl ring-1 ring-white/10 bg-slate-900/60 p-6">
+              <div class="text-sm text-slate-300">Preferir falar agora?</div>
+              <a class="mt-2 inline-flex rounded-xl bg-white/10 hover:bg-white/15 px-4 py-2" href="https://wa.me/5500000000000?text=Ol%C3%A1%2C%20quero%20um%20site%20com%20a%20CODLUNE">Abrir WhatsApp</a>
+              <div class="mt-6 h-56 w-full overflow-hidden rounded-xl ring-1 ring-white/10">
+                <img class="w-full h-full object-cover" src="https://placehold.co/900x600/png?text=IA:+Mapa+abstrato" alt="Imagem IA: mapa abstrato"/>
+              </div>
+              <ul class="mt-6 space-y-2 text-sm text-slate-300">
+                <li>📧 atendimento@codlune.com.br</li>
+                <li>📍 São Paulo • Brasil</li>
+                <li>🕒 Seg a Sex • 9h às 18h</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid md:grid-cols-4 gap-8 text-sm">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand-500/10 ring-1 ring-brand-500/30">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="text-brand-400"><path d="M12 3l3.5 6H21l-4.5 4 1.5 7-6-4-6 4 1.5-7L3 9h5.5L12 3z" fill="currentColor"/></svg>
+              </span>
+              <span class="font-semibold">CODLUNE</span>
+            </div>
+            <p class="mt-3 text-slate-300">Sites modernos, rápidos e inteligentes — prontos para crescer com o seu negócio.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-slate-200">Empresa</h4>
+            <ul class="mt-3 space-y-2 text-slate-300">
+              <li><a class="hover:text-brand-300" href="#sobre">Sobre nós</a></li>
+              <li><a class="hover:text-brand-300" href="#portfolio">Portfólio</a></li>
+              <li><a class="hover:text-brand-300" href="#contato">Contato</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-slate-200">Serviços</h4>
+            <ul class="mt-3 space-y-2 text-slate-300">
+              <li><a class="hover:text-brand-300" href="#servicos">Websites</a></li>
+              <li><a class="hover:text-brand-300" href="#servicos">E‑commerce</a></li>
+              <li><a class="hover:text-brand-300" href="#servicos">Automação</a></li>
+              <li><a class="hover:text-brand-300" href="#servicos">SEO</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold text-slate-200">Siga</h4>
+            <ul class="mt-3 space-y-2 text-slate-300">
+              <li><a class="hover:text-brand-300" href="#" aria-label="Instagram">Instagram</a></li>
+              <li><a class="hover:text-brand-300" href="#" aria-label="LinkedIn">LinkedIn</a></li>
+              <li><a class="hover:text-brand-300" href="#" aria-label="YouTube">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          <div>© <span id="year"></span> CODLUNE. Todos os direitos reservados.</div>
+          <div class="flex items-center gap-4">
+            <a class="hover:text-brand-300" href="#">Termos</a>
+            <a class="hover:text-brand-300" href="#">Privacidade</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Router e utilidades -->
+    <script>
+      const routes = ['home', 'servicos', 'planos', 'portfolio', 'sobre', 'contato'];
+      const setRoute = (hash) => {
+        const target = (hash || '#home').replace('#', '');
+        document.querySelectorAll('[data-route]').forEach((el) => el.classList.remove('active', 'page-enter-active'));
+        const page = document.querySelector(`[data-route="${target}"]`) || document.querySelector('[data-route="home"]');
+        page.classList.add('active');
+        // animação de entrada
+        requestAnimationFrame(() => page.classList.add('page-enter-active'));
+        // fechar menu mobile ao navegar
+        mobileMenu.classList.add('hidden');
+      };
+      window.addEventListener('hashchange', () => setRoute(location.hash));
+      window.addEventListener('DOMContentLoaded', () => {
+        setRoute(location.hash);
+        document.getElementById('year').textContent = new Date().getFullYear();
+      });
+
+      // Menu mobile toggle
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      menuBtn?.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    </script>
+  </body>
+</html>
